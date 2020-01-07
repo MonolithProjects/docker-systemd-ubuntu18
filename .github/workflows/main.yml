@@ -1,12 +1,12 @@
 name: Dockerfile test
 
 on:
-    # push:
-    #     branches:
-    #         - master
-    #         - develop
-    # schedule:
-    #     - cron: '0 4 * * 0'
+    push:
+        branches:
+            - master
+            - develop
+    schedule:
+        - cron: '0 4 * * 0'
 
 jobs:
     build:
