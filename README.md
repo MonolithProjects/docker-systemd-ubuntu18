@@ -10,6 +10,7 @@ Ubuntu18 docker image (based on actual base image version). I am using it with M
 ## Tags
 
   - `latest`: Latest version of the image
+  - `20191202`: Ubuntu18 with packages from 2nd Dec 2019
 
 
 ## How-to
