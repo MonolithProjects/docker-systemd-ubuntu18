@@ -5,13 +5,14 @@ on:
         branches:
             - master
             - develop
+            - feature/*
     schedule:
         - cron: '0 4 * * 0'
 
 jobs:
     build:
         runs-on: ubuntu-latest
-        if: "! contains(github.event.head_commit.message, '[skip-ci]')"
+        if: contains(github.ref, 'master') || contains(github.ref, 'develop') || contains(github.ref, 'feature/')
         steps:
           - name: checkout
             uses: actions/checkout@v2
