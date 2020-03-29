@@ -16,9 +16,20 @@ RUN apt-get update \
        python-pip \
        software-properties-common \
        rsyslog systemd systemd-cron sudo iproute2 \
-    && rm -Rf /var/lib/apt/lists/* \
-    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
-    && apt-get clean
+		&& rm -Rf /var/lib/apt/lists/* \
+		&& rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+		&& rm -f /lib/systemd/system/multi-user.target.wants/* \
+		&& rm -f /etc/systemd/system/*.wants/* \
+		&& rm -f /lib/systemd/system/local-fs.target.wants/* \
+		&& rm -f /lib/systemd/system/sockets.target.wants/*udev* \
+		&& rm -f /lib/systemd/system/sockets.target.wants/*initctl* \
+		&& rm -f /lib/systemd/system/basic.target.wants/* \
+		&& rm -f /lib/systemd/system/anaconda.target.wants/* \
+		&& rm -f /lib/systemd/system/plymouth* \
+		&& rm -f /lib/systemd/system/systemd-update-utmp* \
+		&& rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+		&& apt-get clean
 
 RUN set -eux \
 	&& groupadd -g ${MY_GID} ${MY_GROUP} \
